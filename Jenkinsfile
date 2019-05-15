@@ -1,24 +1,9 @@
 pipeline {
-  agent any
+    agent { docker { image 'node:6.3' } }
     stages {
-        stage('One') {
+        stage('build') {
             steps {
-                echo 'One output test'
-            }
-        }
-        stage('Two') {
-            steps {
-                echo 'Could do something else here'
-            }
-        }
-        stage('Three') {
-            when {
-                not {
-                    branch "master"
-                }
-            }
-            steps {
-                echo "Hello"
+                sh 'npm --version'
             }
         }
     }
